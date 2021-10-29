@@ -9,7 +9,7 @@ import { computed } from 'vue'
 import { useAppStore } from '@/store/modules/app'
 const appStore = useAppStore()
 import zhCn from 'element-plus/lib/locale/lang/zh-cn'
-
+console.log('哈哈哈哈哈')
 const greyMode = computed(() => appStore.getGreyMode)
 </script>
 

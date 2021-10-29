@@ -1,4 +1,5 @@
-import { defineConfig } from 'vite'
+import type { UserConfig } from 'vite'
+import { loadEnv } from 'vite'
 import vue from '@vitejs/plugin-vue'
 import Components from 'unplugin-vue-components/vite'
 import { resolve } from 'path'
@@ -15,61 +16,97 @@ function pathResolve(dir: string) {
 }
 
 // https://vitejs.dev/config/
-export default defineConfig({
-  // base: '/dist-pro/',
-  plugins: [
-    vue(),
-    vueJsx(),
-    vueSetupExtend(),
-    ElementPlus({
-      useSource: false
-    }),
-    Components({
-      dts: true,
-      resolvers: [ElementPlusResolver()]
-    }),
-    eslintPlugin({
-      cache: false,
-      include: ['src/**/*.vue', 'src/**/*.ts', 'src/**/*.tsx'] // 检查的文件
-    }),
-    viteSvgIcons({
-      // 指定需要缓存的图标文件夹
-      iconDirs: [resolve(process.cwd(), 'src/assets/icons')],
-      // 指定symbolId格式
-      symbolId: 'icon-[dir]-[name]',
-      // 压缩
-      svgoOptions: true
-    }),
-    commonjsExternals({
-      externals: ['path']
-    })
-  ],
+export default (): UserConfig => {
+  const mode = process.env.mode
+  const root = process.cwd()
+  const env = loadEnv(mode, root)
+  console.log(env)
+  console.log(env.VITE_SOURCEMAP === 'false')
 
-  css: {
-    preprocessorOptions: {
-      less: {
-        additionalData: '@import "./src/styles/variables.less";',
-        javascriptEnabled: true
+  return {
+    base: env.VITE_BASE_PATH,
+    plugins: [
+      vue(),
+      vueJsx(),
+      vueSetupExtend(),
+      ElementPlus({
+        useSource: false
+      }),
+      Components({
+        dts: true,
+        deep: true,
+        dirs: ['src/components', 'src/layout'],
+        resolvers: [ElementPlusResolver()]
+      }),
+      eslintPlugin({
+        cache: false,
+        include: ['src/**/*.vue', 'src/**/*.ts', 'src/**/*.tsx'] // 检查的文件
+      }),
+      viteSvgIcons({
+        // 指定需要缓存的图标文件夹
+        iconDirs: [resolve(root, 'src/assets/icons')],
+        // 指定symbolId格式
+        symbolId: 'icon-[dir]-[name]',
+        // 压缩
+        svgoOptions: true
+      }),
+      commonjsExternals({
+        externals: ['path']
+      })
+    ],
+
+    css: {
+      preprocessorOptions: {
+        less: {
+          additionalData: '@import "./src/styles/variables.less";',
+          javascriptEnabled: true
+        }
+      }
+    },
+    resolve: {
+      alias: [
+        {
+          find: /\@\//,
+          replacement: pathResolve('src') + '/'
+        },
+        {
+          find: /\_v\//,
+          replacement: pathResolve('src/views') + '/'
+        },
+        {
+          find: /\_c\//,
+          replacement: pathResolve('src/components') + '/'
+        }
+      ]
+    },
+    build: {
+      outDir: env.VITE_OUT_DIR,
+      sourcemap: env.VITE_SOURCEMAP === 'true',
+      brotliSize: false,
+      terserOptions: {
+        compress: {
+          drop_debugger: env.VITE_DROP_DEBUGGER === 'true',
+          drop_console: env.VITE_DROP_CONSOLE === 'true'
+        }
+      }
+    },
+    server: {
+      proxy: {
+        // 字符串简写写法
+        '/foo': 'http://localhost:4567/foo',
+        // 选项写法
+        '/api': {
+          target: 'http://jsonplaceholder.typicode.com',
+          changeOrigin: true,
+          rewrite: (path) => path.replace(/^\/api/, '')
+        },
+        // 正则表达式写法
+        '^/fallback/.*': {
+          target: 'http://jsonplaceholder.typicode.com',
+          changeOrigin: true,
+          rewrite: (path) => path.replace(/^\/fallback/, '')
+        }
       }
     }
-  },
-  resolve: {
-    alias: [
-      {
-        find: /\@\//,
-        replacement: pathResolve('src') + '/'
-      },
-      {
-        find: /\_v\//,
-        replacement: pathResolve('src/views') + '/'
-      },
-      {
-        find: /\_c\//,
-        replacement: pathResolve('src/components') + '/'
-      }
-    ]
-  },
-  build: {
-    sourcemap: true
   }
-})
+}

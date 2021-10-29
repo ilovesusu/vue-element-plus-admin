@@ -6,3 +6,4 @@
 /test/unit/coverage/
 /node_modules/*
 /src/env.d.ts
+/dist*
