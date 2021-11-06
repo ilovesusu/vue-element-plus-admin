@@ -109,6 +109,67 @@ export const checkedRoleNodes = [
     ]
   },
   {
+    path: '/form-demo',
+    component: '#',
+    redirect: '/form-demo/basic-form',
+    name: 'FormDemo',
+    meta: {
+      title: '表单',
+      icon: 'form',
+      alwaysShow: true
+    },
+    children: [
+      {
+        path: 'basic-form',
+        component: 'views/form-demo/basic-form/index',
+        name: 'BasicForm',
+        meta: {
+          title: '基础表单'
+        }
+      },
+      {
+        path: 'slot-form',
+        component: 'views/form-demo/slot-form/index',
+        name: 'SlotForm',
+        meta: {
+          title: '插槽表单'
+        }
+      },
+      {
+        path: 'dynamic-form',
+        component: 'views/form-demo/dynamic-form/index',
+        name: 'DynamicForm',
+        meta: {
+          title: '动态表单'
+        }
+      },
+      {
+        path: 'set-props-form',
+        component: 'views/form-demo/set-props-form/index',
+        name: 'SetPropsForm',
+        meta: {
+          title: '表单项设置'
+        }
+      },
+      {
+        path: 'async-form',
+        component: 'views/form-demo/async-form/index',
+        name: 'AsyncForm',
+        meta: {
+          title: '异步表单'
+        }
+      },
+      {
+        path: 'set-value-form',
+        component: 'views/form-demo/set-value-form/index',
+        name: 'SetValueForm',
+        meta: {
+          title: '表单动态赋值'
+        }
+      }
+    ]
+  },
+  {
     path: '/table-demo',
     component: '#',
     redirect: '/table-demo/basic-usage',

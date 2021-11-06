@@ -228,6 +228,67 @@ export const asyncRouterMap: AppRouteRecordRaw[] = [
     ]
   },
   {
+    path: '/form-demo',
+    component: Layout,
+    redirect: '/form-demo/basic-form',
+    name: 'FormDemo',
+    meta: {
+      alwaysShow: true,
+      title: '表单',
+      icon: 'form'
+    },
+    children: [
+      {
+        path: 'basic-form',
+        component: () => import('_v/form-demo/basic-form/index.vue'),
+        name: 'BasicForm',
+        meta: {
+          title: '基础表单'
+        }
+      },
+      {
+        path: 'slot-form',
+        component: () => import('_v/form-demo/slot-form/index.vue'),
+        name: 'SlotForm',
+        meta: {
+          title: '插槽表单'
+        }
+      },
+      {
+        path: 'dynamic-form',
+        component: () => import('_v/form-demo/dynamic-form/index.vue'),
+        name: 'DynamicForm',
+        meta: {
+          title: '动态表单'
+        }
+      },
+      {
+        path: 'set-props-form',
+        component: () => import('_v/form-demo/set-props-form/index.vue'),
+        name: 'SetPropsForm',
+        meta: {
+          title: '表单项设置'
+        }
+      },
+      {
+        path: 'async-form',
+        component: () => import('_v/form-demo/async-form/index.vue'),
+        name: 'AsyncForm',
+        meta: {
+          title: '异步表单'
+        }
+      },
+      {
+        path: 'set-value-form',
+        component: () => import('_v/form-demo/set-value-form/index.vue'),
+        name: 'SetValueForm',
+        meta: {
+          title: '表单动态赋值'
+        }
+      }
+    ]
+  },
+  {
     path: '/table-demo',
     component: Layout,
     redirect: '/table-demo/basic-table',

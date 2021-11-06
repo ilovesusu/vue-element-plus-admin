@@ -5,6 +5,7 @@ module.exports = {
       2,
       'always',
       [
+        'init', // 初始化
         'feat', // 新功能(feature)
         'fix', // 修补bug
         'docs', // 文档(documentation)

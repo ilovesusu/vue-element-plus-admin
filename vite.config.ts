@@ -1,4 +1,4 @@
-import type { UserConfig } from 'vite'
+import type { UserConfig, ConfigEnv } from 'vite'
 import { loadEnv } from 'vite'
 import vue from '@vitejs/plugin-vue'
 import Components from 'unplugin-vue-components/vite'
@@ -11,17 +11,20 @@ import ElementPlus from 'unplugin-element-plus/vite'
 import viteSvgIcons from 'vite-plugin-svg-icons'
 import commonjsExternals from 'vite-plugin-commonjs-externals'
 
+const root = process.cwd()
+
 function pathResolve(dir: string) {
-  return resolve(process.cwd(), '.', dir)
+  return resolve(root, '.', dir)
 }
 
 // https://vitejs.dev/config/
-export default (): UserConfig => {
-  const mode = process.env.mode
-  const root = process.cwd()
-  const env = loadEnv(mode, root)
-  console.log(env)
-  console.log(env.VITE_SOURCEMAP === 'false')
+export default ({ command, mode }: ConfigEnv): UserConfig => {
+  let env = null
+  if (command === 'serve') {
+    env = loadEnv(process.argv[4], root)
+  } else {
+    env = loadEnv(mode, root)
+  }
 
   return {
     base: env.VITE_BASE_PATH,
@@ -80,8 +83,9 @@ export default (): UserConfig => {
       ]
     },
     build: {
+      minify: 'terser',
       outDir: env.VITE_OUT_DIR,
-      sourcemap: env.VITE_SOURCEMAP === 'true',
+      sourcemap: env.VITE_SOURCEMAP === 'true' ? 'inline' : false,
       brotliSize: false,
       terserOptions: {
         compress: {
@@ -107,6 +111,11 @@ export default (): UserConfig => {
           rewrite: (path) => path.replace(/^\/fallback/, '')
         }
       }
+    },
+    optimizeDeps: {
+      include: [
+        'element-plus'
+      ]
     }
   }
 }

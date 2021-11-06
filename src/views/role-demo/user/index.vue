@@ -9,7 +9,7 @@
     />
 
     <div class="search__example--wrap">
-      <com-search :data="searchData" @search-submit="searchSubmit" @reset-submit="resetSubmit" />
+      <com-search :schema="searchData" @search-submit="searchSubmit" @reset-submit="resetSubmit" />
     </div>
 
     <com-table
@@ -54,14 +54,16 @@ const {
   listFun: getUserListApi
 })
 
-const searchData = [
+const searchData: FormSchemaConfig[] = [
   {
     label: '帐号',
     value: '',
-    itemType: 'input',
+    component: 'Input',
     field: 'userName',
-    placeholder: '请输入帐号',
-    clearable: true
+    componentProps: {
+      placeholder: '请输入帐号',
+      clearable: true
+    }
   }
 ]
 
@@ -80,9 +82,7 @@ const columns = [
   },
   {
     label: '备注',
-    slots: {
-      default: 'remark'
-    }
+    field: 'remark'
   }
 ]
 

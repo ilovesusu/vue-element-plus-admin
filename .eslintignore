@@ -5,5 +5,5 @@
 /*.d.ts
 /test/unit/coverage/
 /node_modules/*
-/src/env.d.ts
+/src/types/env.d.ts
 /dist*

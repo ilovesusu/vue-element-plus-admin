@@ -4,8 +4,10 @@
 
 <script setup lang="ts" name="ExampleAdd">
 import InfoWrite from './components/InfoWrite.vue'
-import bus from '@/vue-bus'
+import { useBus } from '@/hooks/web/useBus'
+const { bus } = useBus()
+
 function success(type: string) {
-  bus.$emit('success', type)
+  bus.emit('success', type)
 }
 </script>

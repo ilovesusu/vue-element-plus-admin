@@ -4,5 +4,5 @@
 /public/*
 /docs/*
 /vite.config.ts
-/src/env.d.ts
+/src/types/env.d.ts
 /docs/**/*

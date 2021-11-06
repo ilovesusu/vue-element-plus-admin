@@ -42,11 +42,7 @@ const columns = [
     label: '姓名'
   },
   {
-    field: 'action',
-    slots: {
-      header: 'actionHeader',
-      default: 'action'
-    }
+    field: 'action'
   }
 ]
 

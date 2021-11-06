@@ -62,6 +62,7 @@
 import { ref } from 'vue'
 import Qrcode from '_c/Qrcode/index.vue'
 import { Message } from '_c/Message'
+// @ts-ignore
 import logoImg from '@/assets/img/logo.png'
 
 const text = ref<string>('')

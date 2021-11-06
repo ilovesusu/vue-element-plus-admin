@@ -49,10 +49,7 @@ const fromSchema = [
   {
     field: 'content',
     label: '内容',
-    span: 24,
-    slots: {
-      default: 'content'
-    }
+    span: 24
   }
 ]
 

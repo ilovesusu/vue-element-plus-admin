@@ -8,7 +8,7 @@
       style="margin-bottom: 20px"
     />
     <com-table ref="multipleTable" v-loading="loading" :columns="columns" :data="tableData">
-      <template #id="scope">
+      <template #expand="scope">
         <el-form label-position="left" inline class="demo-table-expand">
           <el-form-item label="商品名称">
             <span>{{ scope.row.name }}</span>
@@ -42,11 +42,8 @@ import { ref } from 'vue'
 
 const columns = [
   {
-    field: 'id',
-    type: 'expand',
-    slots: {
-      default: 'id'
-    }
+    field: 'expand',
+    type: 'expand'
   },
   {
     field: 'id',

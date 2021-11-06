@@ -31,20 +31,14 @@
             :prop="item.field"
           >
             <!-- 表头插槽 -->
-            <template v-if="item.slots && item.slots.header" #header="scope">
-              <table-slot
-                v-if="item.slots && item.slots.header"
-                :slot-name="item.slots.header"
-                :column="item"
-                :index="scope.$index"
-              />
+            <template v-if="slots[item.field + 'Header']" #header="scope">
+              <table-slot :slot-name="item.field + 'Header'" :column="item" :index="scope.$index" />
             </template>
 
             <!-- 表格内容插槽自定义 -->
-            <template v-if="item.slots && item.slots.default" #default="scope">
+            <template v-if="slots[item.field]" #default="scope">
               <table-slot
-                v-if="item.slots && item.slots.default"
-                :slot-name="item.slots.default"
+                :slot-name="item.field"
                 :row="scope.row"
                 :column="item"
                 :index="scope.$index"
@@ -67,7 +61,7 @@
 </template>
 
 <script setup lang="ts" name="ComTable">
-import { PropType, computed, useAttrs, ref, getCurrentInstance, provide } from 'vue'
+import { PropType, computed, useAttrs, ref, getCurrentInstance, provide, useSlots } from 'vue'
 import { deepClone } from '@/utils'
 import { isObject } from '@/utils/validate'
 import TableColumn from './components/TableColumn.vue'
@@ -97,6 +91,7 @@ const props = defineProps({
 })
 
 const attrs = useAttrs()
+const slots = useSlots()
 
 const tableRef = ref<HTMLElement | null>(null)
 function getTableRef() {

@@ -33,12 +33,10 @@ vue-element-plus-admin 的定位是后台集成方案，不太适合当基础模
 │   ├── router # 路由配置
 │   ├── store # 状态管理
 │   ├── styles # 全局样式
+│   ├── types # 全局类型
 │   ├── utils # 全局工具类
 │   ├── views # 路由页面
-│   ├── vue-bus # 跨组件通信
 │   ├── App.vue # 入口vue文件
-│   ├── env.d.ts # vue全局声明
-│   ├── global.d.ts # 业务代码全局声明
 │   ├── main.ts # 主入口文件
 │   └── permission.ts # 路由拦截
 ├── .babelrc # babel配置

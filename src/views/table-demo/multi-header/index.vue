@@ -49,10 +49,7 @@ const columns = [
           },
           {
             field: 'address',
-            label: '地址',
-            slots: {
-              default: 'address'
-            }
+            label: '地址'
           },
           {
             field: 'zip',
@@ -66,10 +63,7 @@ const columns = [
   {
     field: 'action',
     label: '操作',
-    width: '100',
-    slots: {
-      default: 'action'
-    }
+    width: '100'
   }
 ]
 

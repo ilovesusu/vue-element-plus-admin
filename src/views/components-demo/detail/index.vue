@@ -113,7 +113,6 @@
 
 <script setup lang="ts" name="DetailDemo">
 import { reactive, ref, unref } from 'vue'
-import { SchemaConfig } from '_c/ComDetail/types'
 
 const formRef = ref<Nullable<any>>(null)
 

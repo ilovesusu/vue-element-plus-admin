@@ -147,6 +147,73 @@ export const checkedNodes = [
     title: '水印'
   },
   {
+    path: '/form-demo',
+    title: '表单',
+    name: 'FormDemo',
+    children: [
+      {
+        path: '/form-demo/basic-form',
+        title: '基础表单',
+        name: 'BasicForm'
+      },
+      {
+        path: '/form-demo/slot-form',
+        title: '插槽表单',
+        name: 'SlotForm'
+      },
+      {
+        path: '/form-demo/dynamic-form',
+        title: '插槽表单',
+        name: 'DynamicForm'
+      },
+      {
+        path: '/form-demo/set-props-form',
+        title: '表单项设置',
+        name: 'SetPropsForm'
+      },
+      {
+        path: '/form-demo/async-form',
+        title: '异步表单',
+        name: 'AsyncForm'
+      },
+      {
+        path: '/form-demo/set-value-form',
+        title: '表单动态赋值',
+        name: 'SetValueForm'
+      }
+    ]
+  },
+  {
+    path: '/form-demo/basic-form',
+    title: '基础表单',
+    name: 'BasicForm'
+  },
+  {
+    path: '/form-demo/slot-form',
+    title: '插槽表单',
+    name: 'SlotForm'
+  },
+  {
+    path: '/form-demo/dynamic-form',
+    title: '插槽表单',
+    name: 'DynamicForm'
+  },
+  {
+    path: '/form-demo/set-props-form',
+    title: '表单项设置',
+    name: 'SetPropsForm'
+  },
+  {
+    path: '/form-demo/async-form',
+    title: '异步表单',
+    name: 'AsyncForm'
+  },
+  {
+    path: '/form-demo/set-value-form',
+    title: '表单动态赋值',
+    name: 'SetValueForm'
+  },
+  {
     path: '/table-demo',
     title: '表格',
     name: 'TableDemo',
@@ -564,6 +631,13 @@ export const checkedkeys = [
   '/components-demo/qrcode',
   '/components-demo/avatars',
   '/components-demo/watermark',
+  '/form-demo',
+  '/form-demo/basic-form',
+  '/form-demo/slot-form',
+  '/form-demo/dynamic-form',
+  '/form-demo/set-props-form',
+  '/form-demo/async-form',
+  '/form-demo/set-value-form',
   '/table-demo',
   '/table-demo/basic-table',
   '/table-demo/page-table',

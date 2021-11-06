@@ -39,7 +39,6 @@
 
 <script setup lang="ts" name="ComDetail">
 import { PropType, ref, computed } from 'vue'
-import { SchemaConfig } from './types'
 
 const props = defineProps({
   // 详情标题

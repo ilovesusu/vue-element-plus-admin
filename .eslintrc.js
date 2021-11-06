@@ -32,6 +32,7 @@ module.exports = defineConfig({
     '@typescript-eslint/no-empty-function': 'off',
     'vue/custom-event-name-casing': 'off',
     'no-use-before-define': 'off',
+    'prettier/prettier': ['error', { endOfLine: 'auto' }],
     // 'no-use-before-define': [
     //   'error',
     //   {

@@ -97,10 +97,7 @@ const columns = ref<any[]>([
       { text: '公司', value: '公司' }
     ],
     filterMethod: filterTag,
-    filterPlacement: 'bottom-end',
-    slots: {
-      default: 'tag'
-    }
+    filterPlacement: 'bottom-end'
   }
 ])
 

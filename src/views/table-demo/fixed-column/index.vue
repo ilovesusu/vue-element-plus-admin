@@ -55,10 +55,7 @@ const columns = [
     field: 'action',
     label: '操作',
     width: '100',
-    fixed: 'right',
-    slots: {
-      default: 'action'
-    }
+    fixed: 'right'
   }
 ]
 

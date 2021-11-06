@@ -14,7 +14,6 @@
 <script setup lang="ts" name="Detail">
 import { PropType, reactive } from 'vue'
 import { getExampDetApi } from '../api'
-import { SchemaConfig } from '_c/ComDetail/types'
 
 const fromSchema: SchemaConfig[] = [
   {

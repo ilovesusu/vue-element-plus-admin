@@ -68,13 +68,17 @@ npm run dev
   # 启动项目
   "dev": "vite --mode base",
   # 打包生产环境
-  "build:pro": "vue-tsc --noEmit && vite build --mode pro",
+  "build:pro": "npm run ts:check && vite build --mode pro",
   # 打包开发环境
-  "build:dev": "vue-tsc --noEmit && vite build --mode dev",
+  "build:dev": "npm run ts:check && vite build --mode dev",
   # 打包测试环境
-  "build:test": "vue-tsc --noEmit && vite build --mode test",
-  # 本地预览打包后的文件
-  "serve": "vite preview",
+  "build:test": "npm run ts:check && vite build --mode test",
+  # 本地预览生产环境文件
+  "serve:pro": "vite preview --mode pro",
+  # 本地预览开发环境文件
+  "serve:dev": "vite preview --mode dev",
+  # 本地预览测试环境文件
+  "serve:test": "vite preview --mode test",
   # 检测所有依赖更新
   "check": "npx npm-check-updates",
   # 删除所有的node包
@@ -96,6 +100,14 @@ npm run dev
   # husky初始化
   "postinstall": "husky install",
   # ts 类型检测
-  "ts:check": "vue-tsc --noEmit"
+  "ts:check": "vue-tsc --noEmit",
+  # 文档依赖安装
+  "docs:i": "cd docs && yarn install",
+  # 文档运行
+  "docs:dev": "cd docs && npm run dev",
+  # 文档打包
+  "docs:build": "cd docs && npm run build",
+  # 清除缓存
+  "clean:cache": "npx rimraf node_modules/.cache"
 }
 ```

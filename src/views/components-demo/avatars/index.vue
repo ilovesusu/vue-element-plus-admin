@@ -40,7 +40,6 @@
 
 <script setup lang="ts" name="AvatarsDemo">
 import { ref } from 'vue'
-import { AvatarConfig } from '_c/Avatars/types'
 import Avatars from '_c/Avatars/index.vue'
 
 const data = ref<AvatarConfig[]>([

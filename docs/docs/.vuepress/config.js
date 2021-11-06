@@ -43,6 +43,7 @@ module.exports = {
           children: [
             '/components/svg-icon',
             '/components/com-table',
+            '/components/com-form',
             '/components/com-search',
             '/components/com-dialog',
             '/components/com-detail'

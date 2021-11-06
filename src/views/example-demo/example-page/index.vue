@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="search__example--wrap">
-      <com-search :data="searchData" @search-submit="searchSubmit" @reset-submit="resetSubmit" />
+      <com-search :schema="searchData" @search-submit="searchSubmit" @reset-submit="resetSubmit" />
     </div>
 
     <div class="button__example--wrap">
@@ -52,7 +52,9 @@ import { getExampleListApi, delsExampApi } from './api'
 import { useWork } from '@/hooks/work/useWork'
 import { useRouter } from 'vue-router'
 const { push } = useRouter()
-import bus from '@/vue-bus'
+import { useBus } from '@/hooks/web/useBus'
+const { bus } = useBus()
+
 const {
   defaultParams,
   tableData,
@@ -71,14 +73,16 @@ const {
   delFun: delsExampApi
 })
 
-const searchData = [
+const searchData: FormSchemaConfig[] = [
   {
     label: '标题',
     value: '',
-    itemType: 'input',
+    component: 'Input',
     field: 'title',
-    placeholder: '请输入标题',
-    clearable: true
+    componentProps: {
+      placeholder: '请输入标题',
+      clearable: true
+    }
   }
 ]
 
@@ -98,10 +102,7 @@ const columns = [
   },
   {
     field: 'importance',
-    label: '重要性',
-    slots: {
-      default: 'importance'
-    }
+    label: '重要性'
   },
   {
     field: 'pageviews',
@@ -110,10 +111,7 @@ const columns = [
   {
     field: 'action',
     label: '操作',
-    width: '220px',
-    slots: {
-      default: 'action'
-    }
+    width: '220px'
   }
 ]
 
@@ -129,11 +127,11 @@ function open(row: Nullable<IObj>, component?: string) {
 
 getList()
 
-bus.$on('success', (type: string) => {
+bus.on('success', (type: string) => {
   refreshTable(type)
 })
 
 onBeforeUnmount(() => {
-  bus.$off('success')
+  bus.off('success')
 })
 </script>

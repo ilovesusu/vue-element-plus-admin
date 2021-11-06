@@ -45,7 +45,7 @@
 <script setup lang="ts" name="Avatars">
 import { PropType, computed } from 'vue'
 import { deepClone } from '@/utils'
-import { AvatarConfig } from './types'
+// @ts-ignore
 import defaultImg from '@/assets/img/default-avatar.png'
 
 const props = defineProps({

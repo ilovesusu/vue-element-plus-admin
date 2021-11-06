@@ -9,7 +9,7 @@
     />
 
     <div class="search__example--wrap">
-      <com-search :data="searchData" @search-submit="searchSubmit" @reset-submit="resetSubmit" />
+      <com-search :schema="searchData" @search-submit="searchSubmit" @reset-submit="resetSubmit" />
     </div>
 
     <com-table
@@ -88,14 +88,16 @@ const {
   listFun: getRoleListApi
 })
 
-const searchData = [
+const searchData: FormSchemaConfig[] = [
   {
     label: '角色名',
     value: '',
-    itemType: 'input',
+    component: 'Input',
     field: 'roleName',
-    placeholder: '请输入角色名',
-    clearable: true
+    componentProps: {
+      placeholder: '请输入角色名',
+      clearable: true
+    }
   }
 ]
 
@@ -106,17 +108,12 @@ const columns = [
   },
   {
     label: '备注',
-    slots: {
-      default: 'remark'
-    }
+    field: 'remark'
   },
   {
     field: 'action',
     label: '操作',
-    width: '80px',
-    slots: {
-      default: 'action'
-    }
+    width: '80px'
   }
 ]
 

@@ -15,7 +15,11 @@
       style="margin-top: 20px; margin-bottom: 20px"
     />
     <div class="searh">
-      <com-search :data="classicData" @search-submit="searchSubmit1" @reset-submit="resetSubmit1" />
+      <com-search
+        :schema="classicData"
+        @search-submit="searchSubmit1"
+        @reset-submit="resetSubmit1"
+      />
       <div> 查询/重置后的数据：{{ formData1 }} </div>
     </div>
 
@@ -29,7 +33,7 @@
     <div class="searh">
       <com-search
         layout="bottom"
-        :data="classicData"
+        :schema="classicData"
         @search-submit="searchSubmit2"
         @reset-submit="resetSubmit2"
       />
@@ -46,7 +50,7 @@
     <div class="searh">
       <com-search
         layout="right"
-        :data="classicData"
+        :schema="classicData"
         @search-submit="searchSubmit3"
         @reset-submit="resetSubmit3"
       />
@@ -57,7 +61,7 @@
 
 <script setup lang="ts" name="SearchDemo">
 import { ref } from 'vue'
-import { classicData } from './data'
+import { data as classicData } from './data'
 const formData1 = ref<Nullable<IObj>>(null)
 const formData2 = ref<Nullable<IObj>>(null)
 const formData3 = ref<Nullable<IObj>>(null)
