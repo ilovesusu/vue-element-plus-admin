@@ -29,8 +29,8 @@
           </template>
 
           <el-form-item
-            v-bind="{ ...getFormItemValue(item) }"
             v-else-if="!item.hidden"
+            v-bind="{ ...getFormItemValue(item) }"
             :label="item.label"
             :prop="item.field"
           >
@@ -41,8 +41,8 @@
             <template v-else>
               <template v-if="item.component === 'Radio' && item.options">
                 <el-radio
-                  v-bind="{ ...item.componentProps }"
                   v-for="v in item.options"
+                  v-bind="{ ...item.componentProps }"
                   :key="`Radio${v.value}`"
                   v-model="formInline[item.field]"
                   :label="
@@ -67,8 +67,8 @@
               <template v-else-if="item.component === 'RadioGroup' && item.options">
                 <el-radio-group v-model="formInline[item.field]">
                   <el-radio
-                    v-bind="{ ...item.componentProps }"
                     v-for="v in item.options"
+                    v-bind="{ ...item.componentProps }"
                     :key="`RadioGroup${v.value}`"
                     :label="
                       item.optionsField && item.optionsField.valueField
@@ -92,8 +92,8 @@
 
               <template v-else-if="item.component === 'Checkbox' && item.options">
                 <el-checkbox
-                  v-bind="{ ...item.componentProps }"
                   v-for="v in item.options"
+                  v-bind="{ ...item.componentProps }"
                   :key="`Checkbox${v.value}`"
                   v-model="formInline[item.field]"
                   @change="
@@ -113,8 +113,8 @@
               <template v-else-if="item.component === 'CheckboxGroup' && item.options">
                 <el-checkbox-group v-model="formInline[item.field]">
                   <el-checkbox
-                    v-bind="{ ...item.componentProps }"
                     v-for="v in item.options"
+                    v-bind="{ ...item.componentProps }"
                     :key="`CheckboxGroup${v.value}`"
                     :label="
                       item.optionsField && item.optionsField.valueField
@@ -138,8 +138,8 @@
 
               <template v-else-if="item.component === 'Input'">
                 <el-input
-                  v-bind="{ ...item.componentProps }"
                   v-model="formInline[item.field]"
+                  v-bind="{ ...item.componentProps }"
                   @change="
                     () => {
                       changeVal(item)
@@ -150,8 +150,8 @@
 
               <template v-else-if="item.component === 'InputNumber'">
                 <el-input-number
-                  v-bind="{ ...item.componentProps }"
                   v-model="formInline[item.field]"
+                  v-bind="{ ...item.componentProps }"
                   @change="
                     () => {
                       changeVal(item)
@@ -162,8 +162,8 @@
 
               <template v-else-if="item.component === 'Select'">
                 <el-select
-                  v-bind="{ ...item.componentProps }"
                   v-model="formInline[item.field]"
+                  v-bind="{ ...item.componentProps }"
                   @change="
                     () => {
                       changeVal(item)
@@ -189,8 +189,8 @@
 
               <template v-else-if="item.component === 'Cascader' && item.options">
                 <el-cascader
-                  v-bind="{ ...item.componentProps }"
                   v-model="formInline[item.field]"
+                  v-bind="{ ...item.componentProps }"
                   :options="item.options"
                   @change="
                     () => {
@@ -202,8 +202,8 @@
 
               <template v-else-if="item.component === 'Switch'">
                 <el-switch
-                  v-bind="{ ...item.componentProps }"
                   v-model="formInline[item.field]"
+                  v-bind="{ ...item.componentProps }"
                   @change="
                     () => {
                       changeVal(item)
@@ -214,8 +214,8 @@
 
               <template v-else-if="item.component === 'Slider'">
                 <el-slider
-                  v-bind="{ ...item.componentProps }"
                   v-model="formInline[item.field]"
+                  v-bind="{ ...item.componentProps }"
                   @change="
                     () => {
                       changeVal(item)
@@ -226,8 +226,8 @@
 
               <template v-else-if="item.component === 'TimePicker'">
                 <el-time-select
-                  v-bind="{ ...item.componentProps }"
                   v-model="formInline[item.field]"
+                  v-bind="{ ...item.componentProps }"
                   @change="
                     () => {
                       changeVal(item)
@@ -238,8 +238,8 @@
 
               <template v-else-if="item.component === 'DatePicker'">
                 <el-date-picker
-                  v-bind="{ ...item.componentProps }"
                   v-model="formInline[item.field]"
+                  v-bind="{ ...item.componentProps }"
                   @change="
                     () => {
                       changeVal(item)
@@ -250,8 +250,8 @@
 
               <template v-else-if="item.component === 'Rate'">
                 <el-rate
-                  v-bind="{ ...item.componentProps }"
                   v-model="formInline[item.field]"
+                  v-bind="{ ...item.componentProps }"
                   @change="
                     () => {
                       changeVal(item)
@@ -262,8 +262,8 @@
 
               <template v-else-if="item.component === 'ColorPicker'">
                 <el-color-picker
-                  v-bind="{ ...item.componentProps }"
                   v-model="formInline[item.field]"
+                  v-bind="{ ...item.componentProps }"
                   @change="
                     () => {
                       changeVal(item)
@@ -274,8 +274,8 @@
 
               <template v-else-if="item.component === 'Transfer' && item.options">
                 <el-transfer
-                  v-bind="{ ...item.componentProps }"
                   v-model="formInline[item.field]"
+                  v-bind="{ ...item.componentProps }"
                   :data="item.options"
                   @change="
                     () => {
