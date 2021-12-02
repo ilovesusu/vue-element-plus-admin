@@ -1,8 +1,9 @@
 module.exports = {
   root: true,
-  plugins: ['stylelint-order'],
+  plugins: ['stylelint-order', 'stylelint-declaration-block-no-ignored-properties'],
   extends: ['stylelint-config-standard', 'stylelint-config-prettier'],
   rules: {
+    'plugin/declaration-block-no-ignored-properties': true,
     'selector-pseudo-class-no-unknown': [
       true,
       {
