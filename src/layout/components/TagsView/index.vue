@@ -300,7 +300,6 @@ defineExpose({
 
     .tags-view-item {
       position: relative;
-      top: -1px;
       display: inline-block;
       height: var(--tags-view-height);
       padding: 0 40px 0 20px;
@@ -311,7 +310,8 @@ defineExpose({
       cursor: pointer;
       background: #fff;
       background-color: #f7f5f2;
-      border: 1px solid #e7edf1;
+      border-right: 1px solid #e7edf1;
+      border-left: 1px solid #e7edf1;
 
       &.active {
         position: relative;
